@@ -89,7 +89,16 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "https://test.research-edu.uz",  # Productionda qo'shing
 ]
-
+# CSRF himoyasi uchun ishonchli manbalar
+CSRF_TRUSTED_ORIGINS = [
+    'https://test.research-edu.uz',  # Asosiy domen
+    'https://www.test.research-edu.uz',  # Agar www kerak bo'lsa
+    # Agar HTTP ishlatayotgan bo'lsangiz (tavsiya etilmaydi)
+    'http://test.research-edu.uz',
+    'https://*.research-edu.uz',  # Subdomenlar uchun wildcard (ixtiyoriy)
+    'http://localhost:3100',  # Local test uchun (Next.js porti)
+    'http://192.168.90.10:9100',  # Backend IP va porti
+]
 # REST Framework sozlamalari
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
