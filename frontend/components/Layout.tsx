@@ -5,6 +5,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useTheme } from "../app/theme-context";
+import Head from "next/head";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -20,7 +21,7 @@ export default function Layout({
   return (
     <>
       {/* SEO Meta Tags */}
-      <head>
+      <Head>
         <title>{title}</title>
         <meta
           name="description"
@@ -38,7 +39,7 @@ export default function Layout({
         />
         <meta property="og:type" content="website" />
         <link rel="icon" href="/favicon.ico" />
-      </head>
+      </Head>
 
       {/* Main Container */}
       <div className="min-h-screen flex flex-col bg-base-200">
