@@ -1,10 +1,9 @@
 // app/sitemap.xml/route.tsx
 import { NextResponse } from "next/server";
-import api from "../../lib/axios";
-import { Conference } from "../../types";
+import api, { BASE_URL } from "@/lib/axios";
+import { Conference } from "@/types";
 
 export async function GET() {
-  const baseUrl = "https://your-site.com"; // Production URL
   const res = await api.get("conferences/");
   const conferences: Conference[] = res.data;
 
@@ -12,9 +11,9 @@ export async function GET() {
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`;
 
   conferences.forEach((conf) => {
-    xml += `<url><loc>${baseUrl}/${conf.slug}</loc></url>`;
+    xml += `<url><loc>${BASE_URL}/${conf.slug}</loc></url>`;
     conf.articles?.forEach((art) => {
-      xml += `<url><loc>${baseUrl}/${conf.slug}/${art.slug}</loc><lastmod>${art.pub_date}</lastmod></url>`;
+      xml += `<url><loc>${BASE_URL}/${conf.slug}/${art.slug}</loc><lastmod>${art.pub_date}</lastmod></url>`;
     });
   });
 

@@ -1,4 +1,9 @@
 // lib/axios.ts
+
+export const BASE_URL =
+  process.env.NODE_ENV === "production"
+    ? "https://test.research-edu.uz"
+    : "http://localhost:8000";
 import axios, {
   AxiosInstance,
   AxiosError,
@@ -7,7 +12,7 @@ import axios, {
 } from "axios";
 
 const api: AxiosInstance = axios.create({
-  baseURL: "http://localhost:8000/api/", // Backend URL (productionda o'zgartiring, masalan, process.env.NEXT_PUBLIC_API_URL)
+  baseURL: `${BASE_URL}/api/`, // Backend URL (productionda o'zgartiring, masalan, process.env.NEXT_PUBLIC_API_URL)
   timeout: 10000, // 10 sekund timeout
   headers: {
     "Content-Type": "application/json",

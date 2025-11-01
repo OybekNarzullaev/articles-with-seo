@@ -3,11 +3,16 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'your-secret-key'  # O'zingiz generatsiya qiling: python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
+# O'zingiz generatsiya qiling: python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
+SECRET_KEY = 'your-secret-key'
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']  # Productionda o'zgartiring
+ALLOWED_HOSTS = [
+    "test.research-edu.uz",
+    "localhost",
+    "192.168.90.10"
+]  # Productionda o'zgartiring
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -15,7 +20,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    # 'django.contrib.staticfiles',
     'rest_framework',  # API uchun
     'corsheaders',     # Next.js uchun CORS
     'articles',        # Yangi app
@@ -24,6 +29,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',  # CORS birinchi bo'lishi kerak
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -69,7 +75,10 @@ TIME_ZONE = 'Asia/Tashkent'
 USE_I18N = True
 USE_TZ = True
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 MEDIA_URL = '/media/'  # PDF va logolar uchun
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Fayllar saqlanadigan papka
 
@@ -78,12 +87,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # CORS sozlamalari (Next.js uchun)
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
-    "https://your-frontend-url.com",  # Productionda qo'shing
+    "https://test.research-edu.uz",  # Productionda qo'shing
 ]
 
 # REST Framework sozlamalari
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',  # Hamma uchun ochiq (productionda o'zgartiring)
+        # Hamma uchun ochiq (productionda o'zgartiring)
+        'rest_framework.permissions.AllowAny',
     ]
 }
