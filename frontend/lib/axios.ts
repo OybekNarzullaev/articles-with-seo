@@ -3,7 +3,7 @@
 export const BASE_URL =
   process.env.NODE_ENV === "production"
     ? "https://test.research-edu.uz"
-    : "http://localhost:8000";
+    : "https://test.research-edu.uz";
 import axios, {
   AxiosInstance,
   AxiosError,

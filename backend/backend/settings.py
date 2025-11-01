@@ -88,6 +88,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "https://test.research-edu.uz",  # Productionda qo'shing
+    'http://192.168.90.10:3100',
 ]
 # CSRF himoyasi uchun ishonchli manbalar
 CSRF_TRUSTED_ORIGINS = [
@@ -98,6 +99,7 @@ CSRF_TRUSTED_ORIGINS = [
     'https://*.research-edu.uz',  # Subdomenlar uchun wildcard (ixtiyoriy)
     'http://localhost:3100',  # Local test uchun (Next.js porti)
     'http://192.168.90.10:9100',  # Backend IP va porti
+    'http://192.168.90.10:3100',
 ]
 # REST Framework sozlamalari
 REST_FRAMEWORK = {
