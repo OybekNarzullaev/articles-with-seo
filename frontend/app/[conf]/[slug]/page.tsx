@@ -25,7 +25,7 @@ export default async function ArticleDetail({
       .map((name) => ({ "@type": "Person", name: name.trim() })),
     datePublished: article.pub_date,
     abstract: article.abstract,
-    url: `https://your-site.com/${confSlug}/${article.slug}`,
+    url: `https://test.research-edu.uz/${confSlug}/${article.slug}`,
     sameAs: article.doi ? `https://doi.org/${article.doi}` : undefined,
     isPartOf: {
       "@type": "PublicationEvent",
