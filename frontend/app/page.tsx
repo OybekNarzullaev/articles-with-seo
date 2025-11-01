@@ -16,7 +16,7 @@ export default async function Home() {
       {/* Hero Section - Zamonaviy va Chiroyli Dizayn */}
       <div
         className="hero min-h-screen relative overflow-hidden bg-cover bg-center"
-        style={{ backgroundImage: 'url("/hero-bg.jpg")' }}
+        // style={{ backgroundImage: 'url("/hero-bg.jpg")' }}
       >
         {" "}
         {/* Orqa fon rasm: ilmiy kitoblar yoki konferensiya zal */}
